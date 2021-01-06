@@ -19,11 +19,10 @@
 
         <div class="card">
             <div class="card-body login-card-body">
-                <form action="" method="POST">
+                <form action="" method='POST'>
                     {% csrf_token %}
 
                     <div class="input-group mb-2">
-                        <!-- <input type="text" class="form-control" placeholder="First Name" name="first_name"> -->
                         {{form.first_name}}
                         <div class="input-group-append">
                             <span class="input-group-text">
@@ -82,8 +81,12 @@
                     </div>
                 </form>
 
-                <hr>
+                {% if form.errors %}
+                    <hr>
+                    <p> {{form.errors}} </p>
+                {% endif %}
 
+                <hr>
                 <div class="text-center" style="margin-top: 16px;">
                     <a href="{% url 'login' %}"> Go to Login Page </a>
                 </div>
