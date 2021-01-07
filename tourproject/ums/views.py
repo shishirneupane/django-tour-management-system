@@ -6,11 +6,6 @@ from .forms import CreateUserForm
 
 # Create your views here.
 
-def home(request):
-    context = {}
-    return render(request, 'ums/dashboard.html', context)
-
-
 def register_page(request):
     form = CreateUserForm()
 
@@ -41,3 +36,13 @@ def login_page(request):
 
     context = {}
     return render(request, 'ums/login.html', context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
+
+
+def home(request):
+    context = {}
+    return render(request, 'ums/dashboard.html', context)
