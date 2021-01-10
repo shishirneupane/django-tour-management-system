@@ -18,7 +18,7 @@
         </div>
 
         <div class="card">
-            <div class="card-body login-card-body">
+            <div class="card-body login-card-body border border-dark">
                 <form action="" method='POST'>
                     {% csrf_token %}
 
@@ -87,8 +87,8 @@
                 {% endif %}
 
                 <hr>
-                <div class="text-center" style="margin-top: 16px;">
-                    <a href="{% url 'login' %}"> Go to Login Page </a>
+                <div class="text-center">
+                    <a href="{% url 'login' %}" class="go-to-other-page"> Go to Login Page </a>
                 </div>
             </div>
         </div>

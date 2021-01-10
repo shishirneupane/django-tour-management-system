@@ -1,24 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from .forms import CreateUserForm
 
 # Create your views here.
 
 def register_page(request):
-    form = CreateUserForm()
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Account was created for ' + user)
+                return redirect('login')
 
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
-            return redirect('login')
-
-    context = {'form': form}
-    return render(request, 'ums/register.html', context)
+        context = {'form': form}
+        return render(request, 'ums/register.html', context)
     
 
 def login_page(request):
@@ -43,6 +46,7 @@ def logout_user(request):
     return redirect('login')
 
 
+@login_required(login_url='login')
 def home(request):
     context = {}
     return render(request, 'ums/dashboard.html', context)

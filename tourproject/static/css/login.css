@@ -11,10 +11,6 @@ div {
     display: block;
 }
 
-a {
-    background-color: transparent;
-}
-
 b {
     font-weight: bolder;
 }
@@ -36,4 +32,9 @@ b {
 .login-logo {
     margin-bottom: 1rem;
     text-align: center;
+}
+
+a, a:hover.go-to-other-page {
+    color: #000;
+    text-decoration: none;
 }
