@@ -25,20 +25,23 @@ def register_page(request):
     
 
 def login_page(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.info(request, 'Username or Password is incorrect')
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.info(request, 'Username or Password is incorrect')
 
-    context = {}
-    return render(request, 'ums/login.html', context)
+        context = {}
+        return render(request, 'ums/login.html', context)
 
 
 def logout_user(request):
