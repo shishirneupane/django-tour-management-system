@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .forms import CreateUserForm
+from .models import Guest
 
 # Create your views here.
 
@@ -53,3 +54,10 @@ def logout_user(request):
 def home(request):
     context = {}
     return render(request, 'ums/dashboard.html', context)
+
+
+@login_required(login_url='login')
+def guests(request):
+    guests = Guest.objects.all()
+    context = {'guests': guests}
+    return render(request, 'ums/guests.html', context)

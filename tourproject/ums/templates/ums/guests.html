@@ -1,0 +1,36 @@
+{% extends 'ums/main.html' %}
+
+{% block title %}
+    <title>Guests</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h4>Guests Details</h4>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Country</th>
+                    <th>Travel Destination</th>
+                </tr>
+
+                {% for guest in guests %}
+                    <tr>
+                        <td>{{guest.name}}</td>
+                        <td>{{guest.phone}}</td>
+                        <td>{{guest.email}}</td>
+                        <td>{{guest.country}}</td>
+                        <td>{{guest.destination}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -26,20 +26,28 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+
+    <nav class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}"> Dashboard </a>
+                <a class="nav-link" href="{% url 'home' %}"> Dashboard</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href=""> Products </a>
+            <li class="nav-item active">
+                <a class="nav-link"> |</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'treks' %}"> Trek Destinations </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'guests' %}"> Guests </a>
             </li>
         </ul>
-    </div>
+    </nav>
 
     <span class="hello-logout">
         Logged in as : <a href=""><b id="username"> {{request.user}} </b></a>
     </span>
+
     <h2 class="hello-logout">|</h2>
     <span class="hello-logout">
         <button type="button" class="btn btn-warning">

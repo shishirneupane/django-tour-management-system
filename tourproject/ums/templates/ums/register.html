@@ -10,75 +10,75 @@
 </head>
 
 <body class="login-page">
-    <div class="login-box">
-        <div class="login-logo">
+    <section class="login-box">
+        <section class="login-logo">
             <h2> Tour Package Management System </h2>
             <hr>
             <h4> Register </h4>
-        </div>
+        </section>
 
-        <div class="card">
-            <div class="card-body login-card-body border border-dark">
+        <section class="card">
+            <section class="card-body login-card-body border border-dark">
                 <form action="" method='POST'>
                     {% csrf_token %}
 
-                    <div class="input-group mb-2">
+                    <section class="input-group mb-2">
                         {{form.first_name}}
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
-                    </div>
+                    </section>
                     
-                    <div class="input-group mb-2">
+                    <section class="input-group mb-2">
                         {{form.last_name}}
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="input-group mb-2">
+                    <section class="input-group mb-2">
                         {{form.username}}
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="input-group mb-2">
+                    <section class="input-group mb-2">
                         {{form.email}}
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="input-group mb-2">
+                    <section class="input-group mb-2">
                         {{form.password1}}
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-key"></i>
                             </span>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="input-group mb-2">
+                    <section class="input-group mb-2">
                         {{form.password2}}
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fas fa-key"></i>
                             </span>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="container text-center" style="padding-top: 10px;">
+                    <section class="container text-center" style="padding-top: 10px;">
                         <input type="submit" value="Register" class="btn btn-primary col-5">
-                    </div>
+                    </section>
                 </form>
 
                 {% if form.errors %}
@@ -87,12 +87,12 @@
                 {% endif %}
 
                 <hr>
-                <div class="text-center">
+                <section class="text-center">
                     <a href="{% url 'login' %}" class="go-to-other-page"> Go to Login Page </a>
-                </div>
-            </div>
-        </div>
-    </div>
+                </section>
+            </section>
+        </section>
+    </section>
 
     <script src="{% static '/js/loginform.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
