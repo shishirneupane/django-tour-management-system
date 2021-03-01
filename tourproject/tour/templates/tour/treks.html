@@ -1,12 +1,14 @@
 {% extends 'ums/main.html' %}
+{% load static %}
 
 {% block title %}
     <title>Trek Destinations</title>
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md">
+<section class="container-fluid">
+    <section class="row">
+        <section class="col-md-8">
             <div class="card card-body">
                 <h4>Trek Destinations</h4>
             </div>
@@ -17,13 +19,25 @@
                     </tr>
 
                     {% for trek in treks %}
-                        <tr>
-                            <td>{{trek.name}}</td>
-                        </tr>
+                    <tr>
+                        <td>{{trek.name}}</td>
+                    </tr>
                     {% endfor %}
-
                 </table>
             </div>
-        </div>
-    </div>
+        </section>
+        <section class="col-md-4">
+            <div class="card card-body">
+                <h4>Add new trek destination</h4>
+            </div>
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" placeholder="Destination Name" name="trekdestination">
+                    <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 15px;">
+                </form>
+            </div>
+        </section>
+    </section>
+</section>
 {% endblock %}

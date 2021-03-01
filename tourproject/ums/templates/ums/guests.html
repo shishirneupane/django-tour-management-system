@@ -1,36 +1,55 @@
 {% extends 'ums/main.html' %}
+{% load static %}
 
 {% block title %}
     <title>Guests</title>
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md">
-        <div class="card card-body">
-            <h4>Guests Details</h4>
-        </div>
-        <div class="card card-body">
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Phone Number</th>
-                    <th>Email Address</th>
-                    <th>Country</th>
-                    <th>Travel Destination</th>
-                </tr>
-
-                {% for guest in guests %}
+<section class="container-fluid">
+    <section class="row">
+        <section class="col-md-8">
+            <div class="card card-body">
+                <h4>Guests Details</h4>
+            </div>
+            <div class="card card-body">
+                <table class="table">
                     <tr>
-                        <td>{{guest.name}}</td>
-                        <td>{{guest.phone}}</td>
-                        <td>{{guest.email}}</td>
-                        <td>{{guest.country}}</td>
-                        <td>{{guest.destination}}</td>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email Address</th>
+                        <th>Country</th>
+                        <th>Travel Destination</th>
                     </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-</div>
+
+                    {% for guest in guests %}
+                        <tr>
+                            <td>{{guest.name}}</td>
+                            <td>{{guest.phone}}</td>
+                            <td>{{guest.email}}</td>
+                            <td>{{guest.country}}</td>
+                            <td>{{guest.destination}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+        <section class="col-md-4">
+            <div class="card card-body">
+                <h4>Add new guests</h4>
+            </div>
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" placeholder="Full Name" name="fullname" style="margin-bottom: 10px;">
+                    <input type="tel" class="form-control" placeholder="Phone Number" name="phone" style="margin-bottom: 10px;">
+                    <input type="email" class="form-control" placeholder="Email Address" name="email" style="margin-bottom: 10px;">
+                    <input type="text" class="form-control" placeholder="Country" name="country" style="margin-bottom: 10px;">
+                    <input type="text" class="form-control" placeholder="Travel Destination" name="destination" style="margin-bottom: 15px;">
+                    <input type="submit" value="Add guest" class="btn btn-primary">
+                </form>
+            </div>
+        </section>
+    </section>
+</section>
 {% endblock %}
