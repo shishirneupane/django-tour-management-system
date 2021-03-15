@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>Trek Destinations</title>
+    <title>Hotels</title>
 {% endblock %}
 
 {% block content %}
@@ -10,30 +10,40 @@
     <section class="row">
         <section class="col-md-8">
             <div class="card card-body">
-                <h4>Trek Destinations</h4>
+                <span>
+                    <h4>Hotels</h4>
+                </span>
             </div>
+
             <div class="card card-body">
                 <table class="table">
                     <tr>
-                        <th>Destination Name</th>
+                        <th>Hotel Name</th>
+                        <th>Hotel Fare (NPR)</th>
                     </tr>
 
-                    {% for trek in treks %}
+                    {% for hotel in allHotels %}
                     <tr>
-                        <td>{{trek.name}}</td>
+                        <td>{{hotel.hotelName}}</td>
+                        <td>{{hotel.fare}}</td>
                     </tr>
                     {% endfor %}
                 </table>
             </div>
         </section>
+
         <section class="col-md-4">
             <div class="card card-body">
-                <h4>Add new trek destination</h4>
+                <h4>Add new hotel</h4>
             </div>
             <div class="card card-body">
                 <form action="" method="POST">
                     {% csrf_token %}
-                    <input type="text" class="form-control" placeholder="Destination Name" name="trekdestination">
+                    <label for="hotelName">Hotel Name : </label>
+                    {{form.hotelName}}
+                    <label for="hotelFare">Hotel Fare (NPR) : </label>
+                    {{form.fare}}
+                    <hr>
                     <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 15px;">
                 </form>
             </div>

@@ -1,0 +1,54 @@
+{% extends 'ums/main.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Airlines</title>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <section class="row">
+        <section class="col-md-8">
+            <div class="card card-body">
+                <span>
+                    <h4>Airlines</h4>
+                </span>
+            </div>
+
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Airline Name</th>
+                        <th>Airline Fare (NPR)</th>
+                    </tr>
+
+                    {% for airline in allAirlines %}
+                    <tr>
+                        <td>{{airline.airlineName}}</td>
+                        <td>{{airline.fare}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+
+        <section class="col-md-4">
+            <div class="card card-body">
+                <h4>Add new airline</h4>
+            </div>
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <label for="airlineName">Airline Name : </label>
+                    {{form.airlineName}}
+                    <label for="airlineFare">Airline Fare (NPR) : </label>
+                    {{form.fare}}
+                    <hr>
+                    <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 15px;">
+                </form>
+            </div>
+            <br>
+        </section>
+    </section>
+</section>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.db import models
-from tour.models import TrekDestination
+from tour.models import *
 
 # Create your models here.
 
@@ -17,7 +17,9 @@ class Guest(models.Model):
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
     country = models.CharField(max_length=200, null=True, choices=COUNTRY_CHOICES)
-    destination = models.CharField(max_length=200, null=True, choices=TrekDestination.DESTINATIONS)
+    destination = models.ForeignKey(Destination, null=True, on_delete=models.RESTRICT)
+    hotel = models.ForeignKey(Hotel, null=True, on_delete=models.RESTRICT)
+    airline = models.ForeignKey(Airline, null=True, on_delete=models.RESTRICT)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

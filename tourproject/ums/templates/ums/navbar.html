@@ -35,9 +35,16 @@
             <li class="nav-item active">
                 <a class="nav-link"> |</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'treks' %}"> Trek Destinations </a>
-            </li>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Services
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'destinations' %}">Destinations</a>
+                    <a class="dropdown-item" href="{% url 'hotels' %}">Hotels</a>
+                    <a class="dropdown-item" href="{% url 'airlines' %}">Airlines</a>
+                </div>
+              </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'guests' %}"> Guests </a>
             </li>

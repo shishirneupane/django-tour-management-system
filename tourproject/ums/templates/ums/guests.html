@@ -8,7 +8,7 @@
 {% block content %}
 <section class="container-fluid">
     <section class="row">
-        <section class="col-md-8">
+        <section class="col-md-9">
             <div class="card card-body">
                 <h4>Guests Details</h4>
             </div>
@@ -19,7 +19,9 @@
                         <th>Phone Number</th>
                         <th>Email Address</th>
                         <th>Country</th>
-                        <th>Travel Destination</th>
+                        <th>Destination</th>
+                        <th>Hotel</th>
+                        <th>Airline</th>
                     </tr>
 
                     {% for guest in guests %}
@@ -34,7 +36,7 @@
                 </table>
             </div>
         </section>
-        <section class="col-md-4">
+        <section class="col-md-3">
             <div class="card card-body">
                 <h4>Add new guests</h4>
             </div>
@@ -45,7 +47,9 @@
                     <input type="tel" class="form-control" placeholder="Phone Number" name="phone" style="margin-bottom: 10px;">
                     <input type="email" class="form-control" placeholder="Email Address" name="email" style="margin-bottom: 10px;">
                     <input type="text" class="form-control" placeholder="Country" name="country" style="margin-bottom: 10px;">
-                    <input type="text" class="form-control" placeholder="Travel Destination" name="destination" style="margin-bottom: 15px;">
+                    <input type="text" class="form-control" placeholder="Destination" name="destination" style="margin-bottom: 10px;">
+                    <input type="text" class="form-control" placeholder="Hotel" name="destination" style="margin-bottom: 10px;">
+                    <input type="text" class="form-control" placeholder="Airline" name="destination" style="margin-bottom: 15px;">
                     <input type="submit" value="Add guest" class="btn btn-primary">
                 </form>
             </div>

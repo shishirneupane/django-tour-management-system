@@ -1,0 +1,49 @@
+{% extends 'ums/main.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Destinations</title>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <section class="row">
+        <section class="col-md-8">
+            <div class="card card-body">
+                <span>
+                    <h4>Destinations</h4>
+                </span>
+            </div>
+
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Destination Name</th>
+                    </tr>
+
+                    {% for destination in allDestinations %}
+                    <tr>
+                        <td>{{destination.destinationName}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+
+        <section class="col-md-4">
+            <div class="card card-body">
+                <h4>Add new destination</h4>
+            </div>
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <label for="destinationName">Destination Name : </label>
+                    {{form.destinationName}}
+                    <hr>
+                    <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 15px;">
+                </form>
+            </div>
+        </section>
+    </section>
+</section>
+{% endblock %}
