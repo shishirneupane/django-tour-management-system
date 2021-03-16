@@ -20,7 +20,7 @@
                     <tr>
                         <th>Airline Name</th>
                         <th>Airline Fare (NPR)</th>
-                        <th>Actions</th>
+                        <th style="padding-left: 35px;">Actions</th>
                     </tr>
 
                     {% for airline in allAirlines %}
@@ -28,7 +28,11 @@
                         <td>{{airline.airlineName}}</td>
                         <td>{{airline.fare}}</td>
                         <td>
-                            <form action="{% url 'delete_airline' airline.id %}" method="POST">
+                            <form action="{% url 'update_airline' airline.id %}" method="POST" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn" title="Update" onclick="return confirm('Update details for \'{{airline.airlineName}}\' ?')"><i class="far fa-edit fa-lg"></i></button>
+                            </form>
+                            <form action="{% url 'delete_airline' airline.id %}" method="POST" style="display: inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="btn"><i class="far fa-trash-alt fa-lg"></i></button>
                             </form>
