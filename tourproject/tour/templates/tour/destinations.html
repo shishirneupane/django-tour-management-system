@@ -19,11 +19,18 @@
                 <table class="table">
                     <tr>
                         <th>Destination Name</th>
+                        <th>Actions</th>
                     </tr>
 
                     {% for destination in allDestinations %}
                     <tr>
                         <td>{{destination.destinationName}}</td>
+                        <td>
+                            <form action="{% url 'delete_destination' destination.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn"><i class="far fa-trash-alt fa-lg"></i></button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>

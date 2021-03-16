@@ -43,3 +43,33 @@ def airlines(request):
             return redirect('airlines')
     context = {'allAirlines': allAirlines, 'form': form}
     return render(request, 'tour/airlines.html', context)
+
+
+@login_required(login_url='login')
+def deleteDestination(request, id):
+    destination = Destination.objects.get(id=id)
+    if request.method == 'POST':
+        destination.delete()
+        return redirect('destinations')
+    context = {'destination': destination}
+    return render(request, 'tour/destinations.html', context)
+
+
+@login_required(login_url='login')
+def deleteHotel(request, id):
+    hotel = Hotel.objects.get(id=id)
+    if request.method == 'POST':
+        hotel.delete()
+        return redirect('hotels')
+    context = {'hotel': hotel}
+    return render(request, 'tour/hotels.html', context)
+
+
+@login_required(login_url='login')
+def deleteAirline(request, id):
+    airline = Airline.objects.get(id=id)
+    if request.method == 'POST':
+        airline.delete()
+        return redirect('airlines')
+    context = {'airline': airline}
+    return render(request, 'tour/airlines.html', context)

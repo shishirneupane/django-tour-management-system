@@ -20,12 +20,19 @@
                     <tr>
                         <th>Airline Name</th>
                         <th>Airline Fare (NPR)</th>
+                        <th>Actions</th>
                     </tr>
 
                     {% for airline in allAirlines %}
                     <tr>
                         <td>{{airline.airlineName}}</td>
                         <td>{{airline.fare}}</td>
+                        <td>
+                            <form action="{% url 'delete_airline' airline.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn"><i class="far fa-trash-alt fa-lg"></i></button>
+                            </form>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>
