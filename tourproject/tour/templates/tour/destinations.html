@@ -26,14 +26,8 @@
                     <tr>
                         <td>{{destination.destinationName}}</td>
                         <td>
-                            <form action="{% url 'update_destination' destination.id %}" method="POST" style="display: inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="btn" title="Update" onclick="return confirm('Update details for \'{{destination.destinationName}}\' ?')"><i class="far fa-edit fa-lg"></i></button>
-                            </form>
-                            <form action="{% url 'delete_destination' destination.id %}" method="POST" style="display: inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="btn" title="Delete"><i class="far fa-trash-alt fa-lg"></i></button>
-                            </form>
+                            <a href="{% url 'update_destination' destination.id %}" class="btn" title="Update"><i class="far fa-edit fa-lg"></i></a>
+                            <a href="{% url 'delete_destination' destination.id %}" class="btn" title="Delete"><i class="far fa-trash-alt fa-lg"></i></a>
                         </td>
                     </tr>
                     {% endfor %}

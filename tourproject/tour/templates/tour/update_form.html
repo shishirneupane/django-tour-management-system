@@ -1,0 +1,28 @@
+{% extends 'ums/main.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Update Details</title>
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <section class="row">
+        <section class="col-md-8">
+            <div class="card card-body">
+                <span>
+                    <h4>Update Details</h4>
+                </span>
+            </div>
+
+            <div class="card card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="Update" class="btn btn-primary" style="margin-top: 15px;">
+                </form>
+            </div>
+        </section>
+    </section>
+</section>
+{% endblock %}

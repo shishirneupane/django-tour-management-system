@@ -48,9 +48,8 @@ def airlines(request):
 @login_required(login_url='login')
 def deleteDestination(request, id):
     destination = Destination.objects.get(id=id)
-    if request.method == 'POST':
-        destination.delete()
-        return redirect('destinations')
+    destination.delete()
+    return redirect('destinations')
     context = {'destination': destination}
     return render(request, 'tour/destinations.html', context)
 
@@ -58,9 +57,8 @@ def deleteDestination(request, id):
 @login_required(login_url='login')
 def deleteHotel(request, id):
     hotel = Hotel.objects.get(id=id)
-    if request.method == 'POST':
-        hotel.delete()
-        return redirect('hotels')
+    hotel.delete()
+    return redirect('hotels')
     context = {'hotel': hotel}
     return render(request, 'tour/hotels.html', context)
 
@@ -68,16 +66,14 @@ def deleteHotel(request, id):
 @login_required(login_url='login')
 def deleteAirline(request, id):
     airline = Airline.objects.get(id=id)
-    if request.method == 'POST':
-        airline.delete()
-        return redirect('airlines')
+    airline.delete()
+    return redirect('airlines')
     context = {'airline': airline}
     return render(request, 'tour/airlines.html', context)
 
 
 @login_required(login_url='login')
 def updateDestination(request, id):
-    allDestinations = Destination.objects.all()
     destination = Destination.objects.get(id=id)
     form = DestinationForm(instance=destination)
     if request.method == 'POST':
@@ -85,13 +81,12 @@ def updateDestination(request, id):
         if form.is_valid():
             form.save()
             return redirect('destinations')
-    context = {'allDestinations': allDestinations, 'form': form}
-    return render(request, 'tour/destinations.html', context)
+    context = {'form': form}
+    return render(request, 'tour/update_form.html', context)
     
 
 @login_required(login_url='login')
 def updateHotel(request, id):
-    allHotels = Hotel.objects.all()
     hotel = Hotel.objects.get(id=id)
     form = HotelForm(instance=hotel)
     if request.method == 'POST':
@@ -99,13 +94,12 @@ def updateHotel(request, id):
         if form.is_valid():
             form.save()
             return redirect('hotels')
-    context = {'allHotels': allHotels, 'form': form}
-    return render(request, 'tour/hotels.html', context)
+    context = {'form': form}
+    return render(request, 'tour/update_form.html', context)
     
 
 @login_required(login_url='login')
 def updateAirline(request, id):
-    allAirlines = Airline.objects.all()
     airline = Airline.objects.get(id=id)
     form = AirlineForm(instance=airline)
     if request.method == 'POST':
@@ -113,5 +107,5 @@ def updateAirline(request, id):
         if form.is_valid():
             form.save()
             return redirect('airlines')
-    context = {'allAirlines': allAirlines, 'form': form}
-    return render(request, 'tour/airlines.html', context)
+    context = {'form': form}
+    return render(request, 'tour/update_form.html', context)
