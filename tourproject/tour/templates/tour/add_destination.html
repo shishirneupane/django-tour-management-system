@@ -1,0 +1,14 @@
+<section class="col-md-4">
+    <div class="card card-body">
+        <h4>Add new destination</h4>
+    </div>
+    <div class="card card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="destinationName">Destination Name : </label>
+            {{form.destinationName}}
+            <hr>
+            <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 15px;">
+        </form>
+    </div>
+</section>

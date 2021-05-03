@@ -22,6 +22,7 @@
                         <th>Destination</th>
                         <th>Hotel</th>
                         <th>Airline</th>
+                        <th>Update/Delete</th>
                     </tr>
 
                     {% for guest in guests %}
@@ -31,6 +32,12 @@
                             <td>{{guest.email}}</td>
                             <td>{{guest.country}}</td>
                             <td>{{guest.destination}}</td>
+                            <td>{{guest.hotel}}</td>
+                            <td>{{guest.airline}}</td>
+                            <td>
+                                <a href="{% url 'update_guest' guest.id %}" class="btn" title="Update"><i class="far fa-edit fa-lg"></i></a>
+                                <a href="{% url 'delete_guest' guest.id %}" class="btn" title="Delete"><i class="far fa-trash-alt fa-lg"></i></a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -43,14 +50,8 @@
             <div class="card card-body">
                 <form action="" method="POST">
                     {% csrf_token %}
-                    <input type="text" class="form-control" placeholder="Full Name" name="fullname" style="margin-bottom: 10px;">
-                    <input type="tel" class="form-control" placeholder="Phone Number" name="phone" style="margin-bottom: 10px;">
-                    <input type="email" class="form-control" placeholder="Email Address" name="email" style="margin-bottom: 10px;">
-                    <input type="text" class="form-control" placeholder="Country" name="country" style="margin-bottom: 10px;">
-                    <input type="text" class="form-control" placeholder="Destination" name="destination" style="margin-bottom: 10px;">
-                    <input type="text" class="form-control" placeholder="Hotel" name="destination" style="margin-bottom: 10px;">
-                    <input type="text" class="form-control" placeholder="Airline" name="destination" style="margin-bottom: 15px;">
-                    <input type="submit" value="Add guest" class="btn btn-primary">
+                    {{form.as_p}}
+                    <input type="submit" value="Add Guest" class="btn btn-primary">
                 </form>
             </div>
         </section>

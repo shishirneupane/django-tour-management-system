@@ -1,0 +1,17 @@
+<section class="col-md-4">
+    <div class="card card-body">
+        <h4>Add new airline</h4>
+    </div>
+    <div class="card card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="airlineName">Airline Name : </label>
+            {{form.airlineName}}
+            <label for="airlineFare">Airline Fare (NPR) : </label>
+            {{form.fare}}
+            <hr>
+            <input type="submit" value="Add" class="btn btn-primary" style="margin-top: 15px;">
+        </form>
+    </div>
+    <br>
+</section>

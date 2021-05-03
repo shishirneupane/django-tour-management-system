@@ -20,6 +20,7 @@
                     {% csrf_token %}
                     {{form.as_p}}
                     <input type="submit" value="Update" class="btn btn-primary" style="margin-top: 15px;">
+                    <a href="{% url 'home' %}" class="btn btn-danger" style="margin: 15px 0px 0px 5px;">Cancel</a>
                 </form>
             </div>
         </section>
