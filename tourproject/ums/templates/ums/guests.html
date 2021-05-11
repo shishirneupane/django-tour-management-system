@@ -8,9 +8,10 @@
 {% block content %}
 <section class="container-fluid">
     <section class="row">
-        <section class="col-md-9">
-            <div class="card card-body">
-                <h4>Guests Details</h4>
+        <section class="col-md">
+            <div class="card card-body flex-row">
+                <h4>Booking Details</h4>
+                <a href="{% url 'add_guest' %}" class="btn btn-primary" style="margin-left: 73%;">Create new booking</a>
             </div>
             <div class="card card-body">
                 <table class="table">
@@ -19,6 +20,8 @@
                         <th>Phone Number</th>
                         <th>Email Address</th>
                         <th>Country</th>
+                        <th>Arrival Date</th>
+                        <th>Departure Date</th>
                         <th>Destination</th>
                         <th>Hotel</th>
                         <th>Airline</th>
@@ -31,6 +34,8 @@
                             <td>{{guest.phone}}</td>
                             <td>{{guest.email}}</td>
                             <td>{{guest.country}}</td>
+                            <td>{{guest.arrival_date}}</td>
+                            <td>{{guest.departure_date}}</td>
                             <td>{{guest.destination}}</td>
                             <td>{{guest.hotel}}</td>
                             <td>{{guest.airline}}</td>
@@ -41,18 +46,6 @@
                         </tr>
                     {% endfor %}
                 </table>
-            </div>
-        </section>
-        <section class="col-md-3">
-            <div class="card card-body">
-                <h4>Add new guests</h4>
-            </div>
-            <div class="card card-body">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input type="submit" value="Add Guest" class="btn btn-primary">
-                </form>
             </div>
         </section>
     </section>

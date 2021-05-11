@@ -44,22 +44,6 @@
                         <input type="submit" value="Login" class="btn btn-primary">
                     </section>
                 </form>
-
-                {% for message in messages %}
-                    <hr>
-                    <p style="background: linear-gradient(to bottom, #ffe8d4, #f69d3c);
-                        border: 1px solid #696969;
-                        padding: 10px;
-                        border-radius: 10px;
-                        text-align: center;">
-                        {{message}}
-                    </p>
-                {% endfor %}
-
-                <hr>
-                <section class="text-center">
-                    <a href="{% url 'register' %}" class="go-to-other-page"> Go to Register Page </a>
-                </section>
             </section>
         </section>
     </section>

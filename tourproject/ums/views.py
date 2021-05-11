@@ -2,27 +2,32 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 
 from .forms import CreateUserForm, GuestForm
 from .models import Guest
+from tour.models import Destination, Airline, Hotel
 from .decorators import unauthenticated_user, allowed_users
 
 # Create your views here.
 
-@unauthenticated_user
-def register_page(request):
+@login_required(login_url=login)
+@allowed_users(allowed_roles=['admin'])
+def add_staff(request):
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
-            return redirect('login')
-
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            # add newly registered users to staff group
+            group = Group.objects.get(name='staff')
+            user.groups.add(group)
+            messages.success(request, 'New staff added - \'' + username + '\'')
+            return redirect('home')
     context = {'form': form}
-    return render(request, 'ums/register.html', context)
-    
+    return render(request, 'ums/add_staff.html', context)
+
 
 @unauthenticated_user
 def login_page(request):
@@ -50,7 +55,11 @@ def logout_user(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin', 'staff'])
 def home(request):
-    context = {}
+    guest_count = Guest.objects.count()
+    destination_count = Destination.objects.count()
+    hotel_count = Hotel.objects.count()
+    airline_count = Airline.objects.count()
+    context = {'guest_count': guest_count, 'destination_count': destination_count, 'hotel_count': hotel_count, 'airline_count': airline_count}
     return render(request, 'ums/dashboard.html', context)
 
 
@@ -58,14 +67,21 @@ def home(request):
 @allowed_users(allowed_roles=['admin', 'staff'])
 def guests(request):
     guests = Guest.objects.all()
+    context = {'guests': guests}
+    return render(request, 'ums/guests.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin', 'staff'])
+def addGuest(request):
     form = GuestForm()
     if request.method == 'POST':
         form = GuestForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('guests')
-    context = {'guests': guests, 'form': form}
-    return render(request, 'ums/guests.html', context)
+    context = {'form': form}
+    return render(request, 'ums/add_guest.html', context)
 
 
 @login_required(login_url='login')

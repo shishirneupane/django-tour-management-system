@@ -5,5 +5,44 @@
 {% endblock %}
 
 {% block content %}
-    <h3>Dashboard</h3>
+<section class="container-fluid">
+    <section class="row">
+        <section class="col-3">
+        <section class="card text-center text-white bg-primary">
+        <div class="card-body">
+            <h5 class="card-title">Total Bookings</h5> <hr>
+            <h3 class="card-title">{{guest_count}}</h3>
+        </div>
+        </section>
+        </section>
+
+        <section class="col-3">
+        <section class="card text-center text-white bg-success">
+        <div class="card-body">
+            <h5 class="card-title">Total Destinations</h5> <hr>
+            <h3 class="card-title">{{destination_count}}</h3>
+        </div>
+        </section>
+        </section>
+
+        <section class="col-3">
+        <section class="card text-center text-white bg-info">
+        <div class="card-body">
+            <h5 class="card-title">Total Hotels</h5> <hr>
+            <h3 class="card-title">{{hotel_count}}</h3>
+        </div>
+        </section>
+        </section>
+
+        <section class="col-3">
+        <section class="card text-center text-white bg-danger">
+        <div class="card-body">
+            <h5 class="card-title">Total Airlines</h5> <hr>
+            <h3 class="card-title">{{airline_count}}</h3>
+        </div>
+        </section>
+        </section>
+    </section>
+    <br>
+</section>
 {% endblock %}

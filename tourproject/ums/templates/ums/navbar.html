@@ -46,8 +46,22 @@
                 </div>
               </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'guests' %}"> Guests </a>
+                <a class="nav-link" href="{% url 'guests' %}"> Bookings </a>
             </li>
+            <li class="nav-item active">
+                <a href="{% url 'add_staff' %}" class="nav-link">Add Staff</a>
+            </li>
+            {% for message in messages %}
+            <div style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);">
+                <p style="background: linear-gradient(to bottom, #ffe8d4, #f69d3c);
+                    border: 1px solid #696969;
+                    padding: 10px;
+                    border-radius: 10px;
+                    text-align: center;">
+                    {{message}}
+                </p>
+            </div>
+            {% endfor %}
         </ul>
     </nav>
 

@@ -1,0 +1,28 @@
+{% extends 'ums/main.html' %}
+{% load static %}
+
+{% block title %}
+    <title>New Booking</title>
+{% endblock %}
+
+{% block content %}
+<section class="col-4" style="margin-bottom: 5%; margin-left: 33%;">
+    <section class="card card-body">
+        <h4>Create New Booking</h4>
+    </section>
+    <section class="card card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <hr>
+            <input type="submit" value="Create Booking" class="btn btn-primary" style="margin: 5px 60px 0px;">
+            <a href="{% url 'home' %}" class="btn btn-danger" style="margin: 5px -40px 0px;">Cancel</a>
+        </form>
+
+        {% if form.errors %}
+            <hr>
+            <p> {{form.errors}} </p>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}
