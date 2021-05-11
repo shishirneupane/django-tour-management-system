@@ -1,8 +1,5 @@
-from django.forms import widgets
-from django.forms.widgets import Select
 import django_filters
-from django.forms import SelectDateWidget
-from .models import *
+from .models import Guest
 
 
 class GuestFilter(django_filters.FilterSet):
