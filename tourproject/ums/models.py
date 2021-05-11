@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 from tour.models import *
 
 # Create your models here.
@@ -8,10 +7,6 @@ class Country(models.Model):
     countryName = models.CharField(max_length=200, null=True)
     def __str__(self):
         return self.countryName
-
-
-class DateInput(forms.DateInput):
-    input_type = 'date'
 
 
 class Guest(models.Model):

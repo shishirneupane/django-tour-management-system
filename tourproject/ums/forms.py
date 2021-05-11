@@ -1,5 +1,4 @@
-from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import *
@@ -16,6 +15,6 @@ class GuestForm(ModelForm):
         model = Guest
         fields = '__all__'
         widgets = {
-            'arrival_date': DateInput(),
-            'departure_date': DateInput()
+            'arrival_date': SelectDateWidget(),
+            'departure_date': SelectDateWidget()
         }
