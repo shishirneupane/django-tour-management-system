@@ -11,10 +11,6 @@ class CreateUserForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
 
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
-
 class GuestForm(ModelForm):
     class Meta:
         model = Guest

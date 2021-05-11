@@ -8,6 +8,7 @@ from .forms import CreateUserForm, GuestForm
 from .models import Guest
 from tour.models import Destination, Airline, Hotel
 from .decorators import unauthenticated_user, allowed_users
+from .filters import GuestFilter
 
 # Create your views here.
 
@@ -59,7 +60,19 @@ def home(request):
     destination_count = Destination.objects.count()
     hotel_count = Hotel.objects.count()
     airline_count = Airline.objects.count()
-    context = {'guest_count': guest_count, 'destination_count': destination_count, 'hotel_count': hotel_count, 'airline_count': airline_count}
+
+    guests = Guest.objects.all()
+    guestFilter = GuestFilter(request.GET, queryset=guests)
+    guests = guestFilter.qs
+
+    context = {
+        'guest_count': guest_count,
+        'destination_count': destination_count, 
+        'hotel_count': hotel_count, 
+        'airline_count': airline_count,
+        'guests': guests,
+        'guestFilter': guestFilter
+    }
     return render(request, 'ums/dashboard.html', context)
 
 

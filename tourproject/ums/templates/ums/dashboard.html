@@ -43,6 +43,48 @@
         </section>
         </section>
     </section>
-    <br>
+</section>
+<hr>
+<h4>Filter Guest Bookings</h4>
+<section class="container-fluid" style="margin-bottom: 5%; margin-top: 1.5%;">
+    <section class="row">
+        <section style="width: 344px; margin-right: 5px;">
+            <section class="card card-body">
+                <form method="get">
+                    {{guestFilter.form.as_p}}
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </section>
+        </section>
+        <section style="width: 970px;">
+            <section class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Destination</th>
+                        <th>Hotel</th>
+                        <th>Airline</th>
+                        <th>Arrival Date</th>
+                        <th>Departure Date</th>
+                        <th>Date Created</th>
+                    </tr>
+
+                    {% for guest in guests %}
+                        <tr>
+                            <td>{{guest.name}}</td>
+                            <td>{{guest.country}}</td>
+                            <td>{{guest.destination}}</td>
+                            <td>{{guest.hotel}}</td>
+                            <td>{{guest.airline}}</td>
+                            <td>{{guest.arrival_date}}</td>
+                            <td>{{guest.departure_date}}</td>
+                            <td>{{guest.date_created}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </section>
+        </section>
+    </section>
 </section>
 {% endblock %}
