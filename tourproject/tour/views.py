@@ -55,7 +55,6 @@ def deleteDestination(request, id):
     destination = Destination.objects.get(id=id)
     destination.delete()
     return redirect('destinations')
-    return render(request, 'tour/destinations.html', context={'destination': destination})
 
 
 @login_required(login_url='login')
@@ -64,7 +63,6 @@ def deleteHotel(request, id):
     hotel = Hotel.objects.get(id=id)
     hotel.delete()
     return redirect('hotels')
-    return render(request, 'tour/hotels.html', context={'hotel': hotel})
 
 
 @login_required(login_url='login')
@@ -73,7 +71,6 @@ def deleteAirline(request, id):
     airline = Airline.objects.get(id=id)
     airline.delete()
     return redirect('airlines')
-    return render(request, 'tour/airlines.html', context = {'airline': airline})
 
 
 @login_required(login_url='login')

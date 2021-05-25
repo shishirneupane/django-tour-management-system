@@ -31,6 +31,23 @@ def add_staff(request):
 
 
 @unauthenticated_user
+def register_page(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            # add newly registered users to staff group
+            group = Group.objects.get(name='staff')
+            user.groups.add(group)
+            messages.success(request, 'New staff added - \'' + username + '\'')
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'ums/register.html', context)
+
+
+@unauthenticated_user
 def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -117,5 +134,3 @@ def deleteGuest(request, id):
     guest = Guest.objects.get(id=id)
     guest.delete()
     return redirect('guests')
-    context = {'guest': guest}
-    return render(request, 'tour/guests.html', context)
