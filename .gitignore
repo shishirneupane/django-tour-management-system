@@ -1,10 +1,6 @@
-/Include
-/Lib
-/Scripts
-pyvenv.cfg
-tourproject/.pytest_cache
-tourproject/.vscode
-tourproject/db.sqlite3
+/.pytest_cache
+/.vscode
+db.sqlite3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
